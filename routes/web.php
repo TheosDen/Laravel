@@ -11,6 +11,25 @@
 |
 */
 
+use Illuminate\Support\Facades\DB;
+
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/posts/{task}', function ($id) {
+
+    $name = 'Denis';
+    $age = 34;
+
+//    $tasks = [
+//        'Go to the store',
+//        'Some another task',
+//        'Buy fishing rode'
+//    ];
+
+    $task = DB::table('tasks')->find($id);
+//    $tasks = DB::table('tasks')->get();
+
+    return view('posts.show', compact('task'));
 });
